@@ -1,17 +1,20 @@
 package com.csc205.project2;
 
-public class Sphere extends ThreeDimensionalShape {
+public class Cylinder extends ThreeDimensionalShape {
 
     private double radius;
+    private double height;
 
-    public Sphere() {
+    public Cylinder() {
         super();
         this.radius = 0.0;
+        this.height = 0.0;
     }
 
-    public Sphere(double v) {
+    public Cylinder(double radius, double height) {
         super();
-        this.radius = v;
+        this.radius = radius;
+        this.height = height;
     }
 
     public double getRadius() {
@@ -22,18 +25,27 @@ public class Sphere extends ThreeDimensionalShape {
         this.radius = radius;
     }
 
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
     public double surfaceArea() {
-        return 4.0 * Math.PI * Math.pow(radius, 2);
+        return 2.0 * Math.PI * radius * (radius + height);
     }
 
     public double volume() {
-        return (4.0/3.0) * Math.PI * Math.pow(radius, 3);
+        return Math.PI * Math.pow(radius, 2) * height;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Sphere {");
+        final StringBuilder sb = new StringBuilder("Cylinder {");
         sb.append("radius=").append(radius);
+        sb.append(", height=").append(height);
         sb.append(", surface area=").append(surfaceArea());
         sb.append(", volume=").append(volume());
         sb.append('}');
